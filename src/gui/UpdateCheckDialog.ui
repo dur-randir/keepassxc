@@ -98,10 +98,13 @@
           <number>0</number>
          </property>
          <property name="maximum">
-          <number>0</number>
+          <number>1</number>
          </property>
          <property name="value">
-          <number>0</number>
+          <number>1</number>
+         </property>
+         <property name="textVisible">
+          <bool>false</bool>
          </property>
         </widget>
        </item>

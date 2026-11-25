@@ -186,7 +186,9 @@ void IconDownloaderDialog::updateProgressBar()
     int total = m_urlToEntries.uniqueKeys().count();
     int value = total - m_activeDownloaders.count();
     m_ui->progressBar->setValue(value);
-    m_ui->progressBar->setMaximum(total);
+    // Never let the range collapse to 0..0: an indeterminate QProgressBar leaks a
+    // running native NSProgressIndicator animation under the macOS style.
+    m_ui->progressBar->setMaximum(qMax(1, total));
     m_ui->progressLabel->setText(
         tr("Downloading favicons (%1/%2)…").arg(QString::number(value), QString::number(total)));
 }
